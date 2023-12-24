@@ -53,6 +53,10 @@ const config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      spacing: {
+        'collapsed-sidebar': 'var(--collapsed-sidebar-width)',
+        'expanded-sidebar': 'var(--expanded-sidebar-width)',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

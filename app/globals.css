@@ -20,6 +20,9 @@ body,
 
 @layer base {
   :root {
+    --collapsed-sidebar-width: 70px;
+    --expanded-sidebar-width: 270px;
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
