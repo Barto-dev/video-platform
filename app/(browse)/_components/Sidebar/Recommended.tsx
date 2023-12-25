@@ -29,7 +29,7 @@ export const Recommended = ({
         {data.map((user) => (
           <UserItem
             userName={user.username}
-            isLive
+            isLive={false}
             imageUrl={user.image}
             key={user.id}
           />
