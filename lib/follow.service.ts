@@ -1,6 +1,22 @@
 import { getCurrentUser } from '@/lib/auth.service';
 import { db } from '@/lib/db';
 
+export const getFollowedUsers = async () => {
+  try {
+    const currentUser = await getCurrentUser();
+    return await db.follow.findMany({
+      where: {
+        followerId: currentUser.id,
+      },
+      include: {
+        following: true,
+      },
+    });
+  } catch (e) {
+    return [];
+  }
+};
+
 export const isFollowingUser = async (userId: string) => {
   try {
     const currentUser = await getCurrentUser();
@@ -24,12 +40,10 @@ export const isFollowingUser = async (userId: string) => {
     });
 
     return !!existingFollow;
-
   } catch (e) {
     return false;
   }
 };
-
 
 export const followUser = async (userId: string) => {
   const currentUser = await getCurrentUser();
@@ -48,9 +62,9 @@ export const followUser = async (userId: string) => {
   const existingFollow = await db.follow.findFirst({
     where: {
       followerId: currentUser.id,
-      followingId: followingUser.id
-    }
-  })
+      followingId: followingUser.id,
+    },
+  });
 
   if (existingFollow) {
     throw new Error('Already following user');
@@ -59,14 +73,14 @@ export const followUser = async (userId: string) => {
   return db.follow.create({
     data: {
       followerId: currentUser.id,
-      followingId: followingUser.id
+      followingId: followingUser.id,
     },
     include: {
       following: true,
       follower: true,
-    }
+    },
   });
-}
+};
 
 export const unfollowUser = async (userId: string) => {
   const currentUser = await getCurrentUser();
@@ -85,9 +99,9 @@ export const unfollowUser = async (userId: string) => {
   const existingFollow = await db.follow.findFirst({
     where: {
       followerId: currentUser.id,
-      followingId: followingUser.id
-    }
-  })
+      followingId: followingUser.id,
+    },
+  });
 
   if (!existingFollow) {
     throw new Error('Not following user');
@@ -95,10 +109,10 @@ export const unfollowUser = async (userId: string) => {
 
   return db.follow.delete({
     where: {
-      id: existingFollow.id
+      id: existingFollow.id,
     },
     include: {
       following: true,
-    }
+    },
   });
-}
+};
