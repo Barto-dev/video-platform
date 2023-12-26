@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   // If there are no headers, error out
   if (!svix_id || !svix_timestamp || !svix_signature) {
     return new Response('Error occured -- no svix headers', {
-      status: 400
+      status: 400,
     });
   }
 
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error('Error verifying webhook:', err);
     return new Response('Error occured', {
-      status: 400
+      status: 400,
     });
   }
 
@@ -56,7 +56,8 @@ export async function POST(req: Request) {
         username: payload.data.username,
         image: payload.data.image_url,
         externalUserId: payload.data.id,
-      }
+        stream: { create: { name: `${payload.data.username}'s stream` } },
+      },
     });
   }
 
@@ -68,16 +69,15 @@ export async function POST(req: Request) {
       data: {
         username: payload.data.username,
         image: payload.data.image_url,
-      }
+      },
     });
-
   }
 
   if (eventType === 'user.deleted') {
     await db.user.delete({
       where: {
         externalUserId: payload.data.id,
-      }
+      },
     });
   }
 
