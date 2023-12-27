@@ -41,7 +41,7 @@ export const Actions = ({ isFollowing, userId }: ActionsProps) => {
     startTransition(() => {
       onBlock(userId)
         .then((data) => toast(`You have blocked ${data.blocked.username}!`))
-        .catch(() => toast('Something went wrong!'));
+        .catch((err) => toast(err.message));
     });
   }
 
@@ -49,7 +49,7 @@ export const Actions = ({ isFollowing, userId }: ActionsProps) => {
     startTransition(() => {
       onUnblock(userId)
         .then((data) => toast(`You have unblocked ${data.blocked.username}!`))
-        .catch((err) => toast('Something went wrong!'));
+        .catch((err) => toast(err.message));
     });
   }
 

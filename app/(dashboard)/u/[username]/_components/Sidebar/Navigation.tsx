@@ -22,7 +22,7 @@ export const Navigation = () => {
       icon: KeyRound,
     },
     {
-      name: 'Keys',
+      name: 'Chat',
       href: `/u/${user?.username}/chat`,
       icon: MessageSquare,
     },
