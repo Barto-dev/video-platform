@@ -1,7 +1,7 @@
 import React from 'react';
 import { getCurrentUser } from '@/lib/auth.service';
 import { getUserByUsername } from '@/lib/user.service';
-import { StreamPlayer } from '@/components/StreamPlayer';
+import { StreamPlayer } from '@/components/StreamPlayer/StreamPlayer';
 
 interface CreatorPageProps {
   params: {
