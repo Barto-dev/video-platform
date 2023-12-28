@@ -21,10 +21,18 @@ export const getRecommended = async () => {
           { NOT: { blocking: { some: { blockedId: userId } } } },
         ],
       },
+      include: {
+        stream: {
+          select: {
+            isLive: true,
+          },
+        },
+      },
     });
   }
 
   return db.user.findMany({
     orderBy: { createdAt: 'desc' },
+    include: { stream: { select: { isLive: true } } },
   });
 };
