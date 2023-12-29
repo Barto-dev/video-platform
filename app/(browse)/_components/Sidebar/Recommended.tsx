@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Stream, User } from '@prisma/client';
-import { useSidebar } from '@/store/use-sidebar';
+import { useSidebar } from '@/store/useSidebar';
 import { UserItem, UserItemSkeleton } from './UserItem';
 
 interface RecommendedProps {

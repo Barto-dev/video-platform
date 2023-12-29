@@ -1,6 +1,6 @@
 'use client';
 import React, { ReactNode } from 'react';
-import { useCreatorSidebar } from '@/store/use-creator-sidebar';
+import { useCreatorSidebar } from '@/store/useCreatorSidebar';
 import { cn } from '@/lib/utils';
 
 interface WrapperProps {

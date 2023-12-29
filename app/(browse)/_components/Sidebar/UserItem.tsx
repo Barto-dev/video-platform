@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { useSidebar } from '@/store/use-sidebar';
+import { useSidebar } from '@/store/useSidebar';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';

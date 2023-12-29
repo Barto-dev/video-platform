@@ -2,7 +2,7 @@ import React from 'react';
 import { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useCreatorSidebar } from '@/store/use-creator-sidebar';
+import { useCreatorSidebar } from '@/store/useCreatorSidebar';
 import Link from 'next/link';
 import { Skeleton } from '@/components/ui/skeleton';
 

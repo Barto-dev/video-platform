@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { useSidebar } from '@/store/use-sidebar';
+import { useSidebar } from '@/store/useSidebar';
 import { cn } from '@/lib/utils';
 import { useIsClient } from 'usehooks-ts';
 import { ToggleSkeleton } from './Toggle';

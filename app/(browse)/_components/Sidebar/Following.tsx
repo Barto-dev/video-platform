@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Follow, Stream, User } from '@prisma/client';
-import { useSidebar } from '@/store/use-sidebar';
+import { useSidebar } from '@/store/useSidebar';
 import { UserItem, UserItemSkeleton } from '@/app/(browse)/_components/Sidebar/UserItem';
 
 interface FollowingProps {
