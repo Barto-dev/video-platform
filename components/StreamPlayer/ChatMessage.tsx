@@ -19,7 +19,7 @@ export const ChatMessage = ({ data }: ChatMessageProps) => {
       <div className="flex flex-wrap items-baseline gap-2">
         <p className="text-sm font-semibold whitespace-nowrap">
           <span className="truncate" style={{ color }}>
-            {data.from?.name}
+            {data.from?.name}:
           </span>
         </p>
         <p className="text-sm break-all">{data.message}</p>
