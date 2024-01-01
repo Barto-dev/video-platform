@@ -16,21 +16,21 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en">
-      <body className={inter.className}>
-      <ThemeProvider
-        attribute="class"
-        forcedTheme="dark"
-        storageKey="gamehun-theme"
-      >
-        <Toaster theme="system" />
-        {children}
-      </ThemeProvider>
-      </body>
+        <body className={inter.className}>
+          <ThemeProvider
+            attribute="class"
+            forcedTheme="dark"
+            storageKey="gamehun-theme"
+          >
+            <Toaster theme="system" />
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
