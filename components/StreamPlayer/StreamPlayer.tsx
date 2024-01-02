@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { Chat, ChatSkeleton } from './Chat';
 import { ChatToggle } from './ChatToggle';
 import { LiveInfo, LiveInfoSkeleton } from './LiveInfo';
+import { InfoCard } from './InfoCard';
 
 interface StreamPlayerProps {
   user: User & { stream: Stream | null };
@@ -53,6 +54,12 @@ export const StreamPlayer = ({
             imageUrl={user.image}
             isFollowing={isFollowing}
             name={stream.name}
+          />
+          <InfoCard
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            name={stream.name}
+            thumbnailUrl={stream.thumbnailUrl}
           />
         </div>
         <div className={cn('col-span-1', collapsed && 'hidden')}>
