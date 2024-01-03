@@ -13,11 +13,13 @@ export const createViewerToken = async (hostIdentity: string) => {
     currentUser = await getCurrentUser();
   } catch {
     const id = nanoid();
-    const userName = `guest#${nanoid(4)}`;
-    currentUser = { id, userName };
+    const random = Math.floor(Math.random() * 9000) + 1000;
+    const username = `guest#${random}`;
+    currentUser = { id, username };
   }
 
   const host = await getUserById(hostIdentity);
+
   if (!host) {
     throw new Error('Host not found');
   }
@@ -29,10 +31,14 @@ export const createViewerToken = async (hostIdentity: string) => {
   }
 
   const isHost = currentUser.id === host.id;
-  const token = new AccessToken(process.env.LIVEKIT_API_KEY!, process.env.LIVEKIT_API_SECRET!, {
-    identity: isHost ? `host-${currentUser.id}` : currentUser.id,
-    name: currentUser.username,
-  });
+  const token = new AccessToken(
+    process.env.LIVEKIT_API_KEY!,
+    process.env.LIVEKIT_API_SECRET!,
+    {
+      identity: isHost ? `host-${currentUser.id}` : currentUser.id,
+      name: currentUser.username,
+    },
+  );
 
   token.addGrant({
     room: host.id,
