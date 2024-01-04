@@ -2,7 +2,6 @@ import React from 'react';
 import { User } from '@prisma/client';
 import Link from 'next/link';
 import { Thumbnail, ThumbnailSkeleton } from '@/components/Thumbnail';
-import { LiveBadge } from '@/components/LiveBadge';
 import { UserAvatar, UserAvatarSkeleton } from '@/components/UserAvatar';
 import { Skeleton } from '@/components/ui/skeleton';
 
