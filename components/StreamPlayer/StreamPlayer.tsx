@@ -13,9 +13,25 @@ import { LiveInfo, LiveInfoSkeleton } from './LiveInfo';
 import { InfoCard } from './InfoCard';
 import { AboutCard } from './AboutCard';
 
+type CustomStream = Pick<
+  Stream,
+  | 'id'
+  | 'isLive'
+  | 'isChatFollowersOnly'
+  | 'isChatDelayed'
+  | 'isChatEnabled'
+  | 'thumbnailUrl'
+  | 'name'
+>;
+
+type CustomUser = Pick<User, 'id' | 'username' | 'image' | 'bio' | 'externalUserId'> & {
+  stream: CustomStream | null;
+  _count: { followedBy: number };
+};
+
 interface StreamPlayerProps {
-  user: User & { stream: Stream | null; _count: { followedBy: number } };
-  stream: Stream;
+  user: CustomUser;
+  stream: CustomStream;
   isFollowing: boolean;
 }
 

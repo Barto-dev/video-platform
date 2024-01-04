@@ -40,7 +40,7 @@ export const Actions = ({ isFollowing, userId }: ActionsProps) => {
   const handleBlock = async () => {
     startTransition(() => {
       onBlock(userId)
-        .then((data) => toast(`You have blocked ${data.blocked.username}!`))
+        .then((data) => toast(`You have blocked ${data?.blocked.username}!`))
         .catch((err) => toast(err.message));
     });
   }
@@ -48,7 +48,7 @@ export const Actions = ({ isFollowing, userId }: ActionsProps) => {
   const handleUnblock = async () => {
     startTransition(() => {
       onUnblock(userId)
-        .then((data) => toast(`You have unblocked ${data.blocked.username}!`))
+        .then((data) => toast(`You have unblocked ${data?.blocked.username}!`))
         .catch((err) => toast(err.message));
     });
   }
